@@ -76,6 +76,10 @@ public class FindPage {
     public void findButtonClick() {
         wait.until(ExpectedConditions.elementToBeClickable(findButton));
         findButton.click();
+
+        if (!displayedOfGoBackButton()){
+            findButton.click();
+        }
         wait.until(ExpectedConditions.visibilityOf(goBackButton));
     }
 
