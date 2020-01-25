@@ -1,12 +1,12 @@
-package tests;
+package test;
 
-import blocks.Menu;
-import blocks.Table;
+import main.java.blocks.Menu;
+import main.java.blocks.Table;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.FindPage;
+import main.java.pages.FindPage;
 
 
 public class AdvancedSearchTests extends BaseTest {
@@ -37,13 +37,6 @@ public class AdvancedSearchTests extends BaseTest {
         logger.info("Search test by rank place passed");
     }
 
-//    @Test
-//    public void BurialLocationTest() {
-//        SimpleSearchTests tests = new SimpleSearchTests();
-//        tests.findByBurialPlace();
-//
-//    }
-//
     @AfterMethod
     public void goBackAndClearFields() {
         findPage.scrollResultsUp();

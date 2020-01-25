@@ -1,13 +1,11 @@
-package tests;
+package test;
 
-import blocks.Menu;
+import main.java.blocks.Menu;
 import org.openqa.selenium.Dimension;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.FindPage;
-
-import java.awt.*;
+import main.java.pages.FindPage;
 
 public class StyleTests extends BaseTest {
     FindPage findPage;

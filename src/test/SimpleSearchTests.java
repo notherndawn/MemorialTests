@@ -1,12 +1,12 @@
-package tests;
+package test;
 
-import blocks.Table;
+import main.java.blocks.Table;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.FindPage;
-import blocks.Menu;
+import main.java.pages.FindPage;
+import main.java.blocks.Menu;
 
 import java.util.List;
 

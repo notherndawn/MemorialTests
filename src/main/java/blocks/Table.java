@@ -1,4 +1,4 @@
-package blocks;
+package main.java.blocks;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -60,6 +60,6 @@ public class Table {
 
     public void rowClick (int rowNumber){
         List<WebElement> rows = getRowsOfTable();
-        rows.get(rowNumber - 1).click();
+        rows.get(rowNumber - 1).findElement(By.xpath("./td[1]")).click();
     }
 }
