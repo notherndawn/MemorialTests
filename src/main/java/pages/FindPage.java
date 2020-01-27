@@ -76,7 +76,6 @@ public class FindPage {
     public void findButtonClick() {
         wait.until(ExpectedConditions.elementToBeClickable(findButton));
         findButton.click();
-
         if (!displayedOfGoBackButton()){
             findButton.click();
         }
@@ -97,31 +96,35 @@ public class FindPage {
     public void goBackButtonClick() {
         wait.until(ExpectedConditions.elementToBeClickable(goBackButton));
         goBackButton.click();
+        if (!displayedOfFindButton()){
+            goBackButton.click();
+        }
         wait.until(ExpectedConditions.visibilityOf(findButton));
+    }
+
+    public boolean displayedOfFindButton(){
+        try {
+            if(findButton.isEnabled()){
+                return true;
+            } else{
+                return false;
+            }
+        }
+        catch (NoSuchElementException e) { return false; }
     }
 
     public void surnameClick () {
         surname.click();
     }
-
     public void nameClick () {
         name.click();
     }
-
     public void patronymicClick () {
         patronymic.click();
     }
-
-    public void birthdateClick () {
-        birthdate.click();
-    }
-
-    public void burialPlaceClick () {
-        burialPlace.click();
-    }
-    public void rankClick () {
-        rank.click();
-    }
+    public void birthdateClick () { birthdate.click(); }
+    public void burialPlaceClick () { burialPlace.click(); }
+    public void rankClick () { rank.click(); }
 
     public boolean getDataShrink(WebElement label){
         if (label.getAttribute("data-shrink").equals("true")){
