@@ -27,7 +27,7 @@ public class AdvancedSearchTests extends BaseTest {
         findPage.rankClick();
         findPage.rankClear();
         findPage.rankSendKeys("рядовой");
-        findPage.scrollResultsDown();
+        findPage.scrollJSDown();
         findPage.findButtonClick();
         Table resultTable = new Table(driver, 1);
         resultTable.rowClick(1);
@@ -39,8 +39,8 @@ public class AdvancedSearchTests extends BaseTest {
 
     @AfterMethod
     public void goBackAndClearFields() {
-        findPage.scrollResultsUp();
-        if (findPage.displayedOfGoBackButton()){
+        findPage.scrollJSUp();
+        if (findPage.displayedOfGoBackButton()) {
             findPage.goBackButtonClick();
         }
         findPage.rankClear();

@@ -6,15 +6,15 @@
         <classes>
             <class name="test.StyleTests"/>
             <class name="test.SimpleSearchTests" />
-            <class name="test.AdvancedSearchTests"/>
+            <class name="test.DownloadFileTests" />
         </classes>
     </test>
     <test name="TestsInFirefox">
         <parameter name="browser" value="firefox" />
         <classes>
+            <class name="test.AdvancedSearchTests"/>
             <class name="test.StyleTests"/>
             <class name="test.SimpleSearchTests" />
-            <class name="test.AdvancedSearchTests"/>
         </classes>
     </test>
 </suite>

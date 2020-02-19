@@ -22,12 +22,12 @@ public class Table {
 
     public Table(WebDriver driver, int tableNumber) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 15);
         number = tableNumber;
         PageFactory.initElements(driver, this);
         if(number > 1){
-            wait.until(size -> simpleBodyTables.size() == 3);
-        }
+            wait.until(size -> simpleBodyTables.size() > 1);
+        } else wait.until(size -> simpleBodyTables.size() == 1);
     }
 
     public List<WebElement> getRowsOfTable() {

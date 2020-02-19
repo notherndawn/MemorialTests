@@ -24,6 +24,9 @@ public class Menu {
     @FindBy(xpath = "//div[text()='Расширенный поиск']")
     private WebElement advancedSearchTab;
 
+    @FindBy (css = ".menuItem.link")
+    private WebElement linkInstruction;
+
     public Menu(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 10);
@@ -47,6 +50,9 @@ public class Menu {
 
     public void searchTabClick() { searchTab.click(); }
     public void advancedSearchTabClick() { advancedSearchTab.click(); }
+    public void linkInstructionClick() { linkInstruction.click(); }
+
     public void menuFindTabClick() { menuFind.click(); }
+    public void menuInstructionsTabClick() { menuInstructions.click(); }
 
 }

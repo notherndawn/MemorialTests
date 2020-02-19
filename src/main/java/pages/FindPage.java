@@ -1,16 +1,20 @@
 package main.java.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.SimpleSearchTests;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FindPage {
+    private static final Logger logger = LogManager.getLogger(SimpleSearchTests.class);
     private WebDriver driver;
     private WebDriverWait wait;
     private Actions actions;
@@ -82,9 +86,9 @@ public class FindPage {
         wait.until(ExpectedConditions.visibilityOf(goBackButton));
     }
 
-    public boolean displayedOfGoBackButton(){
+    public boolean displayedOfGoBackButton() {
         try {
-            if(goBackButton.isEnabled()){
+            if(goBackButton.isEnabled()) {
                 return true;
             } else{
                 return false;
@@ -96,13 +100,13 @@ public class FindPage {
     public void goBackButtonClick() {
         wait.until(ExpectedConditions.elementToBeClickable(goBackButton));
         goBackButton.click();
-        if (!displayedOfFindButton()){
+        if (!displayedOfFindButton()) {
             goBackButton.click();
         }
         wait.until(ExpectedConditions.visibilityOf(findButton));
     }
 
-    public boolean displayedOfFindButton(){
+    public boolean displayedOfFindButton() {
         try {
             if(findButton.isEnabled()){
                 return true;
@@ -113,45 +117,39 @@ public class FindPage {
         catch (NoSuchElementException e) { return false; }
     }
 
-    public void surnameClick () {
-        surname.click();
-    }
-    public void nameClick () {
-        name.click();
-    }
-    public void patronymicClick () {
-        patronymic.click();
-    }
+    public void surnameClick () { surname.click(); }
+    public void nameClick () { name.click(); }
+    public void patronymicClick () { patronymic.click(); }
     public void birthdateClick () { birthdate.click(); }
     public void burialPlaceClick () { burialPlace.click(); }
     public void rankClick () { rank.click(); }
 
-    public boolean getDataShrink(WebElement label){
+    public boolean getDataShrink(WebElement label) {
         if (label.getAttribute("data-shrink").equals("true")){
             return true;
         }else return false;
     }
 
-    public void surnameSendKeys (String text){ surname.sendKeys(text); }
-    public void nameSendKeys (String text){ name.sendKeys(text); }
-    public void patronymicSendKeys (String text){ patronymic.sendKeys(text); }
-    public void birthdateSendKeys (String text){ birthdate.sendKeys(text); }
-    public void burialPlaceSendKeys (String text){ burialPlace.sendKeys(text); }
-    public void rankSendKeys (String text){ rank.sendKeys(text); }
+    public void surnameSendKeys (String text) { surname.sendKeys(text); }
+    public void nameSendKeys (String text) { name.sendKeys(text); }
+    public void patronymicSendKeys (String text) { patronymic.sendKeys(text); }
+    public void birthdateSendKeys (String text) { birthdate.sendKeys(text); }
+    public void burialPlaceSendKeys (String text) { burialPlace.sendKeys(text); }
+    public void rankSendKeys (String text) { rank.sendKeys(text); }
 
-    public void surnameClear(){ surname.clear(); }
-    public void nameClear (){ name.clear(); }
-    public void patronymicClear (){ patronymic.clear(); }
-    public void birthdateClear (){ birthdate.clear(); }
-    public void burialPlaceClear (){ burialPlace.clear(); }
-    public void rankClear (){ rank.clear(); }
+    public void surnameClear() { surname.clear(); }
+    public void nameClear () { name.clear(); }
+    public void patronymicClear () { patronymic.clear(); }
+    public void birthdateClear () { birthdate.clear(); }
+    public void burialPlaceClear () { burialPlace.clear(); }
+    public void rankClear () { rank.clear(); }
 
-    public boolean getSurnameDataShrink (){ return getDataShrink(surnameLabel); }
-    public boolean getNameDataShrink (){ return getDataShrink(nameLabel); }
-    public boolean getPatronymicDataShrink (){ return getDataShrink(patronymicLabel); }
-    public boolean getBirthdateDataShrink (){ return getDataShrink(birthdateLabel); }
-    public boolean getBurialPlaceDataShrink (){ return getDataShrink(burialPlaceLabel); }
-    public boolean getRankDataShrink (){ return getDataShrink(rankLabel); }
+    public boolean getSurnameDataShrink () { return getDataShrink(surnameLabel); }
+    public boolean getNameDataShrink () { return getDataShrink(nameLabel); }
+    public boolean getPatronymicDataShrink () { return getDataShrink(patronymicLabel); }
+    public boolean getBirthdateDataShrink () { return getDataShrink(birthdateLabel); }
+    public boolean getBurialPlaceDataShrink () { return getDataShrink(burialPlaceLabel); }
+    public boolean getRankDataShrink () { return getDataShrink(rankLabel); }
 
     public List<String> getBurialComboboxTexts() {
         List<WebElement> rows = burialCombobox.findElements(By.xpath("./ul/li"));
@@ -162,14 +160,14 @@ public class FindPage {
         return textOfRows;
     }
 
-    public void scrollResultsUp() {
-        findBlock.click();
-        actions.moveToElement(findBlock).click().sendKeys(Keys.PAGE_UP).build().perform();
+    public void scrollJSDown() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
-    public void scrollResultsDown() {
-        findBlock.click();
-        actions.moveToElement(findBlock).click().sendKeys(Keys.PAGE_DOWN).build().perform();
+    public void scrollJSUp() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
     }
 
     public Dimension getSizeLogo() {
